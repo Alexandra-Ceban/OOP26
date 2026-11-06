@@ -6,7 +6,9 @@ public  class Logger{
 
        private String name;
        private static LogLevel levelcurrent=LogLevel.INFO;
-       private static String format="[%t] [%l] %n: %m %r";
+       private static String format="[%t] [%l] %n: %m %r ";
+
+       
       
       public Logger(String name){
        this.name=name;
@@ -17,7 +19,7 @@ public  class Logger{
      
      }
 
-     public static void setFormat(String newFormat){
+     public  static void setFormat(String newFormat){
         format=newFormat;
      }
     
@@ -31,31 +33,33 @@ public  class Logger{
             DateTimeFormatter.ofPattern("HH:mm:ss")
        );
         String additional = getAdditionalMessage(messLevel);
-       String output=format;
-       output=output.replace("%t",time);
-       output=output.replace("%n",name);
-       output=output.replace("%m",message);
-       output=output.replace("%l",messLevel.toString());
-       output=output.replace("%r",additional);
+      
+       String output=format
+                   .replace("%t",time)
+                   .replace("%n",name)
+                   .replace("%m",message)
+                   .replace("%l",messLevel.toString())
+                   .replace("%r",additional);
+                   
 
        System.out.println(output);
      }
 
      private String getAdditionalMessage(LogLevel messLevel){
-          
+           
           String [] messages;
 
       switch(messLevel){
-          case TRACE:
-               messages=new String[]{
+          case TRACE: 
+             messages=new String[]{
                     " Something ",
                     " Another thing",
                     " News"
                };
-               break;
+             break;
 
           case INFO:
-                messages=new String[]{
+                 messages=new String[]{
                     " Here is your result",
                     " Operation completed" ,
                     " Everything looks good"
@@ -63,7 +67,7 @@ public  class Logger{
                break;
 
           case WARN:
-               messages=new String[]{
+                messages=new String[]{
                     " Might check again",
                     " Not ready for submitting" ,
                     " Take another look"
@@ -71,7 +75,7 @@ public  class Logger{
                break;
 
           case ERROR:
-                messages=new String[]{
+                 messages=new String[]{
                     " Additional error",
                     " Not working" ,
                     " Failed"

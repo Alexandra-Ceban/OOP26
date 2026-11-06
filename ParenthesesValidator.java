@@ -1,42 +1,52 @@
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 public class ParenthesesValidator {
     Logger first=new Logger("Parentheses");
 
-    public boolean  isValid (String input_user){
-        int balance=0;
-         for(int i=0; i<input_user.length();i++){
-          char current=input_user.charAt(i);
+   
 
-          if(current=='('){
-             balance++;
-             first.trace(" Opening parenthesis found.\n");
-          }
-          else if(current==')'){
+   public boolean isValid(String s){
+    Deque <Character> stack= new ArrayDeque<>();
+    for(int i=0; i<s.length();i++){
+      char c= s.charAt(i);
 
-            if(balance==0){
-              first.trace("Detailed info");
-              first.info("Final result is: FALSE");
-              first.warn("Closing parenthesis has no opening match.");
-              first.error(" Invalid input "+ input_user);
-              return false;
-            }
-            balance--;
-            first.info(" Matching pair found");
-          }
-         }
+   
+      if(c=='('){
+        stack.push(c);
+        first.trace("Opening paranthesis tracked"+c);
 
-           boolean result=balance==0;
+      }
+      else if(c==')'){
+        if(stack.isEmpty())
+          {
+         first.warn("Closing paranthesis detected "+ c+" No opening paranthesis before");
+         return false;
+         }  
+     char top=stack.pop();
 
-           if(result){
-            first.info("The final result is: TRUE");
-           }
-           else{
-            first.info("The final result is: FALSE");
-            first.error("Invalid input: " + input_user
-            + ". There are unmatched opening parentheses.");
-           }
-           return result;
+   if(!isMatchingPair(top,c)){
+      first.warn("Mismatched pair"+top+"doesnt have a matching"+c);
+       return false;
     }
+   first.info("Matching pair found"+top+ c);
+        }
+    }
+    if (!stack.isEmpty()) {
+            first.warn("Unmatched opening parentheses remaining.");
+            first.error("Invalid input"+s);
+            return false;
+        }
 
+        first.info("The final result is: TRUE");
+        return true;
+    }
+     
+//charAt()
+
+ private boolean isMatchingPair(char open, char closed){
+   return(open =='(' && closed==')');
+ }
 }
 
 
