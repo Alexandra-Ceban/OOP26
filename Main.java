@@ -5,6 +5,9 @@ public class Main {
           String input_user="(()";
          boolean result = input1.isValid(input_user);
           System.out.println(result);
+           Logger first=new Logger("Parentheses");
+          first.info("All brackets are good %n");
+                 
         
       
         
