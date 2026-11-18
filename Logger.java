@@ -42,7 +42,7 @@ public  class Logger{
     
      
      
-     public void log(LogLevel messLevel, String message){
+     public void log(LogLevel messLevel, String message, Object...args){
        if(messLevel.ordinal()<levelcurrent.ordinal()){
             return ;
        }
@@ -57,26 +57,26 @@ public  class Logger{
        
 
 
-     public void trace(String message){
+     public void trace(String message, Object...args){
      
-      log(LogLevel.TRACE, message);
+      log(LogLevel.TRACE, message,args);
      }
 
-     public void info(String message){
+     public void info(String message,Object...args){
       
-      log(LogLevel.INFO, message);
+      log(LogLevel.INFO, message,args);
 
      }
 
-     public void warn(String message){
+     public void warn(String message,Object...args){
      
-     log(LogLevel.WARN, message);
+     log(LogLevel.WARN, message,args);
 
      }
 
-     public void error(String message){
+     public void error(String message,Object...args){
      
-     log(LogLevel.ERROR, message);
+     log(LogLevel.ERROR, message,args);
 
      }
 }

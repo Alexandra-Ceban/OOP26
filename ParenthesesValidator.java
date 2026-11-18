@@ -3,7 +3,7 @@ import java.util.Deque;
 
 public class ParenthesesValidator {
     Logger first=new Logger("Parentheses");
-
+    
    
 
    public boolean isValid(String s){
@@ -14,27 +14,27 @@ public class ParenthesesValidator {
    
       if(c=='('){
         stack.push(c);
-        first.trace("Opening paranthesis tracked"+c);
+        first.trace("Opening paranthesis tracked %",c);
 
       }
       else if(c==')'){
         if(stack.isEmpty())
           {
-         first.warn("Closing paranthesis detected "+ c+" No opening paranthesis before");
+         first.warn("Closing paranthesis detected %"+" No opening paranthesis before", c);
          return false;
          }  
      char top=stack.pop();
 
    if(!isMatchingPair(top,c)){
-      first.warn("Mismatched pair"+top+"doesnt have a matching"+c);
+      first.warn("Mismatched pair % "+" doesnt have a matching %", top,c);
        return false;
     }
-   first.info("Matching pair found"+top+ c);
+   first.info("Matching pair found % %",top, c);
         }
     }
     if (!stack.isEmpty()) {
             first.warn("Unmatched opening parentheses remaining.");
-            first.error("Invalid input"+s);
+            first.error("Invalid input %",s);
             return false;
         }
 

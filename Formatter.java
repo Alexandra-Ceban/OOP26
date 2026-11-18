@@ -21,17 +21,18 @@ public class Formatter {
      }
    
 
-     public  String GetData(String name, LogLevel level, String message){
+     public  String GetData(String name, LogLevel level, String message, Object...args){
              String time=LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
 
 
              String additional = getAdditionalMessage(level);
+             String filledMessage = fill(message, args);
              String output= format
                  .replace("%t", time)
                  .replace("%n", name)
                  .replace("%l", level.toString())
                  .replace("%r", additional)
-                 .replace("%m", message);
+                 .replace("%m", filledMessage);
                return output;
                 
      }
@@ -79,4 +80,22 @@ public class Formatter {
       int random=ThreadLocalRandom.current().nextInt(messages.length);
         return messages[random];
      }
+
+     private String fill(String message, Object ...args){
+          StringBuilder result= new StringBuilder();
+          int nextArg=0;
+             for (int i=0; i<message.length();i++){
+               char c=message.charAt(i);
+               if(c=='%' && nextArg< args.length){
+                    result.append(args[nextArg]);
+            nextArg++;
+        } else {
+            result.append(c);
+        }
+    }
+    return result.toString();
+               }
+
+          
+     
 }
