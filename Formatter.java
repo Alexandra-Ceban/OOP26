@@ -82,6 +82,7 @@ public class Formatter {
      }
 
      private String fill(String message, Object ...args){
+          //resizable text buffer
           StringBuilder result= new StringBuilder();
           int nextArg=0;
              for (int i=0; i<message.length();i++){
