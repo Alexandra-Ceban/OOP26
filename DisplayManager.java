@@ -3,13 +3,16 @@ import java.util.List;
 
 public class DisplayManager{
      private String name;
+     private Logger l1;
      private List<Display> manager= new ArrayList<>();
     
-    public DisplayManager(String name){
+    public DisplayManager(String name, Logger l1){
         this.name=name;
+        this.l1=l1;
     }
     public void assignDisplay(Display d){
         manager.add(d);
+        l1.trace("Display % assigned to %!", d.getModel(), name);
     }
      
     //comparing each element
@@ -30,8 +33,17 @@ public class DisplayManager{
             }
     }
 
-    public Display buyDisplay(Display d){
-        manager.remove(d);
+    public  Display buyDisplay(Display d){
+        if(!manager.remove(d)){
+            l1.error("There was an error while buying %", d.getModel());
+            return null;
+        }
+        
+        l1.info(" Display % was bought!", d.getModel());
+
+        if(manager.isEmpty()){
+            l1.warn("Manager % has no displays left", name);
+        }
         return d;
     }
 }

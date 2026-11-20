@@ -4,12 +4,16 @@ public class Display {
     private int width;
     private int height;
     private float ppi;
+    private Logger l2;
 
-     public Display(String model, int width, int height, float ppi){
+     public Display(String model, int width, int height, float ppi, Logger l2){
         this.model=model;
         this.width=width;
         this.height=height;
         this.ppi=ppi;
+        this.l2=l2;
+        
+        l2.trace( "% with % width and % height and % pixels was created",model,width,height,ppi );
      }
      public String getModel(){
       return this.model;

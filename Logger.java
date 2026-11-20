@@ -47,7 +47,7 @@ public  class Logger{
             return ;
        }
 
-       String line = formatNew.GetData(name, messLevel, message);
+       String line = formatNew.GetData(name, messLevel, message, args);
       
         sink.write(line);
      }
