@@ -2,9 +2,11 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class ParenthesesValidator {
-    Logger first=new Logger("Parentheses");
+   private final Logger first;
     
-   
+   public ParenthesesValidator(Logger first){
+    this.first=first;
+   }
 
    public boolean isValid(String s){
     Deque <Character> stack= new ArrayDeque<>();

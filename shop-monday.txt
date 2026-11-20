@@ -1,0 +1,7 @@
+# Monday shop commands
+
+MANAGER manager1
+MANAGER manager2
+
+DISPLAY Samsung-9872 2092 107 112
+DISPLAY LG-272 2892 177 2

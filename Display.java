@@ -18,7 +18,7 @@ public class Display {
      public String getModel(){
       return this.model;
      }
-     public Float getppi(){
+     public Float getPpi(){
       return this.ppi;
      }
      private double diagonal(){
@@ -50,17 +50,23 @@ public class Display {
          String name4 = other.model + " (" + String.format("%.1f", p2) + "\")";
 
          if(p1>p2){
-            return name3+" is bigger than "+ name4;
+            return name3+" is sharper than "+ name4;
          }
          else if (p1< p2) {
-        return name3 + " is smaller than " + name4;
+        return name3 + " is not as sharp as " + name4;
           } else {
-          return name3 + " is the same size as " + name4;
+          return name3 + " is as sharp as " + name4;
           }
      }
 
        public String compareWithMonitor (Display other){
-          return compareSize(other)+" " + compareSharpness(other);
+               int size = Double.compare(diagonal(), other.diagonal());
+         int sharp = Float.compare(ppi, other.ppi);
+         String verdict = (size > 0 && sharp > 0) ? model + " wins on both"
+                        : (size < 0 && sharp < 0) ? other.model + " wins on both"
+                        : "Mixed result: pick by size or sharpness";
+         return compareSize(other) + "\n" + compareSharpness(other) + "\nVerdict: " + verdict;
+}
 
      }
-}
+

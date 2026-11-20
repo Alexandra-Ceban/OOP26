@@ -1,37 +1,47 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args){
-        Logger.setLevel(LogLevel.TRACE);
-        ParenthesesValidator input1= new ParenthesesValidator();
+        
+       
+          
+           //DAY5
+          Formatter f = new Formatter();
+            ConsoleSink s = new ConsoleSink();
+             Logger validatorLogger = new Logger("ParenthesesValidator", f, s);
+            Logger.setLevel(LogLevel.TRACE);
+
+        ParenthesesValidator input1= new ParenthesesValidator(validatorLogger);
           String input_user="((00)))";
          boolean result = input1.isValid(input_user);
           System.out.println(result);
-          
-           //DAY5
-           Formatter f1= new Formatter();
-           ConsoleSink s1= new ConsoleSink();
-           Logger managerLogger = new Logger("Manager", f1, s1);
+
+            Logger mgrLog = new Logger("DisplayManager", f, s);
+            Logger dispLog = new Logger("Display", f, s);
+            Logger readerLog = new Logger("CommandReader", f, s);
         //DAY4
-        DisplayManager m1= new DisplayManager("Manager1", managerLogger);
-        DisplayManager m2= new DisplayManager("manager2", managerLogger);
-        Display lg = new Display("LG=877", 40, 122, 722, managerLogger);
-        Display samsung = new Display("Samsung-9872", 2092, 107, 112f, managerLogger);
+        DisplayManager m1= new DisplayManager("DisplayManager1", dispLog);
+        DisplayManager m2= new DisplayManager("Displaymanager2", dispLog);
+        Display lg = new Display("LG=877", 40, 122, 722, mgrLog);
+        Display samsung = new Display("Samsung-9872", 2092, 107, 112f, mgrLog);
         m1.assignDisplay(samsung);
         m1.assignDisplay(lg);
         m2.assignDisplay(samsung);
          m1.assist();
         Display bought=m1.buyDisplay(samsung);
         
-       
-       
+       //DAY6
       
+       CommandReader reader= new CommandReader(readerLog);
+       List <String> lines= reader.readFile("shop-monday.txt");
+       if (lines!=null){
+        for(int i=0;i<lines.size(); i++){
+            //liniile incep de la rand 1
+       System.out.println((i+1)+ ": "+ lines.get(i));
+        }
+       }
 
-
-
-
-
-                
-        
-      
         
        
     }
