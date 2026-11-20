@@ -11,7 +11,12 @@ public class Display {
         this.height=height;
         this.ppi=ppi;
      }
-
+     public String getModel(){
+      return this.model;
+     }
+     public Float getppi(){
+      return this.ppi;
+     }
      private double diagonal(){
         return Math.sqrt((double)width*width + (double)height*height)/ppi;
      }
