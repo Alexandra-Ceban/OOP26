@@ -15,6 +15,9 @@ public class DisplayManager{
         assignedDisplays.add(d);
         l1.trace("Display % assigned to %!", d.getModel(), name);
     }
+    public String getName(){
+        return name;
+    }
      
     //comparing each element
     public void assist(){
