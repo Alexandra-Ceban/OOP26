@@ -2,17 +2,27 @@ public class Main {
     public static void main(String[] args){
         Logger.setLevel(LogLevel.INFO);
         ParenthesesValidator input1= new ParenthesesValidator();
-          String input_user="()";
+          String input_user="((00)))";
          boolean result = input1.isValid(input_user);
           System.out.println(result);
           
 
-        Display product1= new Display("Samsung-22", 2560, 1440, 93f);
-        Display lg= new Display("LG-27GP850", 2560, 1440, 109f);
-        Display dell= new Display("Dell-P2422H", 1920, 1080, 92f);
-         System.out.println(product1.compareSize(dell));
-        System.out.println(dell.compareSharpness(lg));
-        System.out.println(product1.compareWithMonitor(dell));
+        
+        DisplayManager m1= new DisplayManager("manager1");
+        DisplayManager m2= new DisplayManager("manager2");
+        Display lg = new Display("LG-272", 2892, 177, 002f);
+        Display samsung = new Display("Samsung-9872", 2092, 107, 112f);
+        m1.assignDisplay(samsung);
+        m1.assignDisplay(lg);
+        m2.assignDisplay(samsung);
+         m1.assist();
+        Display bought=m1.buyDisplay(samsung);
+        
+        System.out.println("Bought: "+bought.getModel());
+       
+
+
+
 
 
                 
