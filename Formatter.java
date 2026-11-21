@@ -9,7 +9,7 @@ public class Formatter {
 
    //used in Logger1 constructor , automatically with the setup below
    public Formatter(){
-     this.format="[%t] [%l] %n: %m %r ";
+     this.format="[%l] %n: %m";
    }
    public Formatter(String format){
       this.format=format;

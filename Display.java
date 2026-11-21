@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Display {
     
     private String model;
@@ -5,6 +8,7 @@ public class Display {
     private int height;
     private float ppi;
     private Logger l2;
+   
 
      public Display(String model, int width, int height, float ppi, Logger l2){
         this.model=model;
@@ -21,6 +25,8 @@ public class Display {
      public Float getPpi(){
       return this.ppi;
      }
+
+
      private double diagonal(){
         return Math.sqrt((double)width*width + (double)height*height)/ppi;
      }

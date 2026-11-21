@@ -18,6 +18,16 @@ public class DisplayManager{
     public String getName(){
         return name;
     }
+
+    public boolean hasDisplay(Display d){
+        return assignedDisplays.contains(d);
+    }
+    
+     public boolean hasDisplay() {
+        return !assignedDisplays.isEmpty();
+      }
+
+     
      
     //comparing each element
     public void assist(){
