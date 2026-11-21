@@ -12,8 +12,12 @@ public class DisplayManager{
         l1.trace("A display was created %!", name);
     }
     public void assignDisplay(Display d){
+        if(assignedDisplays.contains(d)){
+            l1.warn("Display % is already assigned to %!", d.getModel(), name);
+        }
+        else{
         assignedDisplays.add(d);
-        l1.trace("Display % assigned to %!", d.getModel(), name);
+        l1.trace("Display % assigned to %!", d.getModel(), name); }
     }
     public String getName(){
         return name;

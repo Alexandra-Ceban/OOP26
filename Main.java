@@ -135,9 +135,9 @@ public class Main {
                     addDisplay(a, lineNumber);}
                     break;
             case "ASSIGN":
-                if(!hasArgs(a, 3, "ASSIGN <manager> <display>", lineNumber)) return;
-                DisplayManager m=manager(a[1], lineNumber);
-                Display d= display(a[2], lineNumber);
+                if(!hasArgs(a, 3, "ASSIGN <display>  <manager> ", lineNumber)) return;
+                DisplayManager m=manager(a[2], lineNumber);
+                Display d= display(a[1], lineNumber);
                 if(m!=null && d!=null) m.assignDisplay(d);
                 break;
             case "COMPARE":
@@ -160,12 +160,12 @@ public class Main {
                 break;
         
             case "BUY":
-                if (!hasArgs(a, 3, "BUY <manager> <display>", lineNumber)) return;
-                DisplayManager v = manager(a[1], lineNumber);
-                Display s= display(a[2], lineNumber);
+                if (!hasArgs(a, 3, "BUY  <display> <manager>", lineNumber)) return;
+                DisplayManager v = manager(a[2], lineNumber);
+                Display s= display(a[1], lineNumber);
                 if (v != null && s != null){
                     if (v.hasDisplay(s)) v.buyDisplay(s);
-                    else {parseLog.error("Line %: Such manager % and display % were not assigned", lineNumber, a[1],a[2]);} }
+                    else {parseLog.error("Line %: Such manager % and display % were not assigned", lineNumber, a[2],a[1]);} }
                 break;
         
             default: parseLog.error("Line %: Unknown command: %",lineNumber, a[0]); break;
