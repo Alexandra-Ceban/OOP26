@@ -1,25 +1,17 @@
-# Additional testing: invalid and boundary cases
-
-MANAGER Alice
-MANAGER Bob
-
-DISPLAY Sony-1234 1920 1080 250
-
-# Assigning a display to a nonexistent manager
-ASSIGN Charlie Sony-1234
-
-# Assigning a nonexistent display
-ASSIGN Alice Fake-Display
-
-# Comparing an existing display with a nonexistent display
-COMPARE Sony-1234 Fake-Display
-
-# Buying a display that is not assigned to Bob
-BUY Sony-1234 Bob
-
-# Unknown command
-UNKNOWN something
-
-# Missing arguments
-MANAGER
-DISPLAY
+# Tuesday at the shop. Not everything here is correct.
+MANAGER Carol
+DISPLAY BenQ-PD2705U 3840 2160 163.0
+DISPLAY AOC-24G2 1920 1080 abc
+DISPLAY Asus-PA278QV 2560 1440
+MANAGER Carol
+ASSIGN BenQ-PD2705U Dave
+ASSIGN Philips-Evnia Carol
+ASSIGN BenQ-PD2705U Carol
+ASSIGN BenQ-PD2705U Carol
+BUY Asus-PA278QV Carol
+SELL BenQ-PD2705U Carol
+assist carol
+BUY BenQ-PD2705U Carol
+BUY BenQ-PD2705U Carol
+ASSIST Carol
+COMPARE BenQ-PD2705U
