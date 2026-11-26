@@ -14,7 +14,7 @@ public class Main {
        
           
            //DAY5
-          Formatter f = new Formatter();
+          Formatter f = new PatternFormatter();
             ConsoleSink s = new ConsoleSink();
              Logger validatorLogger = new Logger("ParenthesesValidator", f, s);
             Logger.setLevel(LogLevel.TRACE);
