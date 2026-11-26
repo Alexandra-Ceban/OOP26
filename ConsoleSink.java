@@ -1,6 +1,8 @@
-public class ConsoleSink {
+public class ConsoleSink implements Sink {
     
-    public void write(String line){
+    @Override 
+         public void write(String line){
         System.out.println(line);
     }
+    
 }

@@ -6,11 +6,11 @@ public  class Logger{
        private String name;
        private static LogLevel levelcurrent=LogLevel.INFO;
        private Formatter formatNew;
-       private ConsoleSink sink;
+       private Sink sink;
        
       
        //composition quick logger with 0 setup
-       //we build internally the formatter and consolesink
+       //we build internally the formatter and sink
       public Logger(String name){
        this.name=name;
        this.formatNew=new Formatter();
@@ -19,7 +19,7 @@ public  class Logger{
       }
 
       //aggregation- plug in customed shared parts
-      public Logger(String name, Formatter formatNew, ConsoleSink sink ){
+      public Logger(String name, Formatter formatNew, Sink sink ){
            this.name = name;
            this.formatNew = formatNew;
            this.sink = sink;
