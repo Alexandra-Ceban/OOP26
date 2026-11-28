@@ -4,7 +4,7 @@
 public  class Logger{
 
        private String name;
-       private static LogLevel levelcurrent=LogLevel.INFO;
+       private LogLevel levelcurrent=LogLevel.INFO;
        private Formatter formatNew;
        private Sink sink;
        
@@ -19,10 +19,11 @@ public  class Logger{
       }
 
       //aggregation- plug in customed shared parts
-      public Logger(String name, Formatter formatNew, Sink sink ){
+      public Logger(String name,LogLevel level, Formatter formatNew, Sink sink ){
            this.name = name;
            this.formatNew = formatNew;
            this.sink = sink;
+           this.levelcurrent=level;
       }
 
       //ensure encapsulation , we can access variables without changing them
@@ -30,11 +31,11 @@ public  class Logger{
           return name;
       }
 
-     public static void setLevel(LogLevel newLevel){
+     public  void setLevel(LogLevel newLevel){
         levelcurrent=newLevel;
      
      }
-     public static LogLevel getLevel(){
+     public LogLevel getLevel(){
           return levelcurrent;
      }
 

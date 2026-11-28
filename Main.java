@@ -1,4 +1,5 @@
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,26 +10,25 @@ public class Main {
      private static Logger parseLog;
       private static Logger mgrLog;
        private static Logger dispLog;
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException{
         
        
           
            //DAY5
           Formatter f = new PatternFormatter();
             ConsoleSink s = new ConsoleSink();
-             Logger validatorLogger = new Logger("ParenthesesValidator", f, s);
-            Logger.setLevel(LogLevel.TRACE);
-        
+             Logger validatorLogger = new Logger("ParenthesesValidator", LogLevel.TRACE,f, s);
+           
 
         ParenthesesValidator input1= new ParenthesesValidator(validatorLogger);
           String input_user="((00)))";
          boolean result = input1.isValid(input_user);
           System.out.println(result);
 
-            mgrLog = new Logger("DisplayManager", f, s);
-            dispLog = new Logger("Display", f, s);
-            Logger readerLog = new Logger("CommandReader", f, s);
-            parseLog= new Logger("ParseLogger",f,s);
+            mgrLog = new Logger("DisplayManager", LogLevel.INFO, f, s);
+            dispLog = new Logger("Display", LogLevel.WARN, f, s);
+            Logger readerLog = new Logger("CommandReader", LogLevel.INFO, f, s);
+            parseLog= new Logger("ParseLogger", LogLevel.ERROR,f,s);
         //DAY4
         DisplayManager m1= new DisplayManager("DisplayManager1", dispLog);
         DisplayManager m2= new DisplayManager("Displaymanager2", dispLog);
@@ -60,9 +60,11 @@ public class Main {
 
         
        }
-
-
-
+     
+       //testing Config
+       Config config= Config.load("logger.conf");
+       LoggerFactory factory= new LoggerFactory(config);
+       Logger logger=factory.create("Dispatch");
         
        
     }
