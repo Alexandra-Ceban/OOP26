@@ -13,7 +13,7 @@ public  class Logger{
        //we build internally the formatter and sink
       public Logger(String name){
        this.name=name;
-       this.formatNew=new Formatter();
+       this.formatNew=new PatternFormatter();
        this.sink= new ConsoleSink();
       
       }
